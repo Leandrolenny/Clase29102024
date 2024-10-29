@@ -1,0 +1,41 @@
+erDiagram
+    PERSON {
+        int id PK
+        string first
+        string last
+    }
+    PASSENGER {
+        int id PK
+        string first
+        string last
+        string flight_id
+    }
+    FLIGHT {
+        int id PK
+        int origin FK
+        int destination FK
+        int duration
+    }
+    CITY {
+        int id PK
+        string code
+        string city
+    }
+    TICKET {
+        int id PK
+        float price
+        string seatNumber
+        string status
+    }
+     PERSON_FLIGHT {
+        int personId FK
+        int flightId FK
+    }
+    
+    
+     PERSON ||--o{ PASSENGER : "is a"
+     PASSENGER ||--o{ FLIGHT : "take"
+     CITY ||--o{ FLIGHT : "has origin"
+     CITY ||--o{ FLIGHT : "has destination"
+     PERSON ||--o{ PERSON_FLIGHT : "is associated with"
+     FLIGHT ||--o{ PERSON_FLIGHT : "is associated with"
